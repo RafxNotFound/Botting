@@ -5,9 +5,9 @@ TilePNB = 5
 InfoLoop = true
 DelayRecon = 25000 --JEDA RECONNECT
 
-WorldPack = {"LOKERFA", "JKAWIDA", "ASDOKAW", "JDUKIA"}
+WorldPack = {"JNAJAS", "HAJKARIM", "WWJAWIR", "KIOSESA"}
 CustomWorldExe = "RAFNIHAO"
-WorldSeed = {"JNAJAS", "HAJKARIM", "WWJAWIR", "KIOSESA", "LAKSODAZ", "KLOPRAE", "KDALWI", "KIASUDE"}
+WorldSeed = {"LAKSODAZ", "KLOPRAE", "KDALWI", "KIASUDE"}
 hargapack = 20000 -- HARGA PACK
 namapack = "world_lock_10_pack" -- NAMA PACK
 MinItemPack = 1 --APABILA JUMLAH ITEM YANG ADA DIDALAM iditempack LEBIH BESAR DARIPADA MinItemPack, MAKA BOTNYA MULAI DROP PACKNYA KE STORAGE!
