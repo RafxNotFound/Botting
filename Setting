@@ -5,7 +5,7 @@ TilePNB = 5
 InfoLoop = true
 DelayRecon = 25000 --JEDA RECONNECT
 
-WorldPack = {"JNAJAS", "HAJKARIM", "WWJAWIR", "KIOSESA"}
+WorldPack = {"LOKERFA", "JKAWIDA", "ASDOKAW", "JDUKIA"}
 CustomWorldExe = "RAFNIHAO"
 WorldSeed = {"LAKSODAZ", "KLOPRAE", "KDALWI", "KIASUDE"}
 hargapack = 20000 -- HARGA PACK
