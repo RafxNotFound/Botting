@@ -1,43 +1,167 @@
-MatikanBot = false
+_G.FishItConfig = _G.FishItConfig or {
+    ["Fishing"] = {
+        ["Auto Perfect"] = false,
+        ["Random Result"] = false,
 
-targetinfo = 5
-TilePNB = 5
-InfoLoop = true
-DelayRecon = 25000 --JEDA RECONNECT
+        ["Auto Favorite"] = true,
+        ["Auto Unfavorite"] = false,
+        ["Fish Name"] = {
+            "Sacred Guardian Squid",
+            {Name = "Ruby", Variant = "Gemstone"},
+            -- {Variant = "Leviathan's Rage"}, -- Variant Only
+            -- {Tier = "Secret", Variant = "Leviathan's Rage"},  -- Tier + Variant
+        },
 
-WorldPack = {"LOKERFA", "JKAWIDA", "ASDOKAW", "JDUKIA"}
-CustomWorldExe = "RAFNIHAO"
-WorldSeed = {"LAKSODAZ", "KLOPRAE", "KDALWI", "KIASUDE"}
-hargapack = 20000 -- HARGA PACK
-namapack = "world_lock_10_pack" -- NAMA PACK
-MinItemPack = 1 --APABILA JUMLAH ITEM YANG ADA DIDALAM iditempack LEBIH BESAR DARIPADA MinItemPack, MAKA BOTNYA MULAI DROP PACKNYA KE STORAGE!
-maxbuy = 200 --MAKSIMAL BOTNYA AKAN REPEAT BELI PACK JIKA GEMSNYA MASIH CUKUP!
-iditempack = {242}
+        ["Auto Accept Trade"] = true,
+        ["Auto Friend Request"] = true,
+    },
+    ["Auto Trade"] = {
+        ["Enabled"] = true,
+        ["Whitelist Username"] = {"Hlyzeth54"},
+        ["Category Fish"] = {
+            "Secret",
+            -- {Tier = "Mythic", Variant = "Leviathan Rage"}, -- Tier + Variant
+        },
+        ["Fish Name"] = {
+            "Sacred Guardian Squid",
+            {Name = "Ruby", Variant = "Gemstone"},
+            -- {Variant = "Leviathan's Rage"}, -- Variant Only
+        },
+        ["Item Name"] = {
+            "Evolved Enchant Stone",
+        },
+    },
+    ["Farm Coin Only"] = {
+        ["Enabled"] = false, -- Farm coins only [ cant buy rod, bait, enchant, weather ]
+        ["Target"] = 190000,
+    },
+    ["Selling"] = {
+        ["Auto Sell"] = true,
+        ["Auto Sell Threshold"] = "Mythic",
+        ["Auto Sell Every"] = 100,
+    },
+    ["Doing Quest"] = {
+        ["Auto Ghostfinn Rod"] = true,
+        ["Auto Element Rod"] = false,
+        ["Unlock Ancient Ruin"] = false,
+        ["Allowed Sacrifice"] = {
+            "Ghost Shark",
+            "Cryoshade Glider",
+            "Panther Eel",
+            "Queen Crab",
+            "King Crab",
+            "Giant Squid",
+            "Blob Shark",
+            "Ghost Shark",
+        },
+        ["FARM_LOC_SECRET_SACRIFICE"] = "Ocean",
 
-SpecialItem = {10536, 10538, 1828, 5746, 5742, 5748, 5744, 9346} --ITEM YANG INGIN DIAMANKAN KE WORLD, COCOK UNTUK HARVEST FEST!
-minSpec = 100 --BOT AKAN DROP ITEM APABILA ITEM TSB MELEBIHI TARGET minSpec
-WorldSpec = "CINASETANG"
-idWorldSpec = "SITII"
-ID_AcuanDrop_Spec = 118 --BOT AKAN DROP SPECIAL ITEM DI RED WOOD WALL (888)
-MinItemPack = 10 --APABILA JUMLAH ITEM YANG ADA DIDALAM iditempack LEBIH BESAR DARIPADA MinItemPack, MAKA BOTNYA MULAI DROP PACKNYA KE STORAGE!
-Istirahat = false --JADIIN FALSE JIKA GAMAU ISTIRAHATIN BOTNYA
+        ["Minimum Rod"] = "Astral Rod",
+    },
+    ["WebHook"] = {
+        ["Link Webhook"] = "https://discord.com/api/webhooks/1025364479334162504/2iKAeYGPv_KbVix4D0yeRemN6DSTAgyfAoBKo4e6u98U9mYVvlsQsNMG9Mq_AUfFi63N",
+        ["Auto Sending"] = true,
+        ["Category"] = {"Secret"},
 
-ContinuePlantProfit = false --HASIL PROFITAN SEED AKAN DITANAM KE WORLD PLANT
-nShowPlant = 6 --WEBHOOKNYA AKAN MENAMPILKAN (3) WORLD PLANT AJA!
-WorldPlant = {"WQZWFRASPMAL","VVTTUBXGSWVK","NZZFNIDKZQEA","FLNWQRDRBKNM","YSLUVOOYXAXB","IWINBWGCLDOF","MYLIYCEXFTJA","XAHRFSXALNBR","HQEYQTTXSELG","GNBOVGPJZXQK","KCWTSOCWJHYD","UGISVNOSQSVT","TMJFYJHBMWTF","CVVCGLKSAACZ","ZNSSOSXHFTFP","SXGIHHISMMDA","LXRGJKCFLFXW","CJRTKMMAPRMH","XYSXFMZPSMPQ","OQWCXQEAPSWU","ORLOKDVUVZGQ","BQEIAPVNHNFY","NFLDKXZEBUZV","QOOTLRFREAGO","AKLDQTCPPGYM","YMZGCIDPLYGP","ZAMXMGKNBYKJ","RIWEBXOVHTQJ","OZWDKOTKSLOU","VIWHSWJWWRUH","EMZHNCMNWGFL","UAPKPUMPOGBF","OCEPLHBYEBKQ","RCFFBSXTPJWD","IQETBJRZBVHV","NUAHWZVZHWIB","NVWEINPIVYUB","DMKYODTYARXM","MGUMBSDGLAES","PITQGMWGZFQZ","UISVFWRYXFJA","XLNYIZYEPJFQ","NEXMIXCRQYJD","JEARIEWWXYLR","OGHKUDWRGYAT","JLHXYHBZYAWV","AJDEGUATZPEP","UOCKDUKKGRVE","FAVCXPOXJBNL","HOSYOOIBRFIP","ZXPYQVPEPAJF","TPCVCVNFUMTY","TMIYMPXLIFCH","NHZIBCBENBAL","ECMWNLHKMKEE","JFRHMNGYYCAS","TPEVBZKKGWDC","FPSFOXBGCHCC","VVLZRNSRNQGC","RGZGBVCWMLKN","QYKAWEWCTSWR","LUBNIMGZVNHB","WCZOYSRNDSES","OXUTCCGNFRIT","RHUYWSIEABIQ","ROOERYPCXNAM","RZLZGMEEIRUX","SDZQHNGDPPJU","NLUVMIJCTEYA","OLMOKJEZGHAL","TNCGLFRQWPAK","EWHLNLHFGYHX","UPGBKCPCNDRA","YGLWAYGIXINF","GCJNDLLZSIWR","RHPNTCWSXYUD","SMOCHNQLKZRB","DNGFLRWIYNYA","ERMKHCXCORFD","IELIURLFAHLD","COOMEPRKIYVI","DBXIFXMAIYWK","DEOKOMUVLQHE","COQYNZTZZWRL","YLEGIYKDSRFV","YSXQHBNCYDQW","WGCWWYWGFKQX","GKFOEDQRSWMZ","MOGTQRUFCRGZ","VGBBYVKGRVYF","XBDSHPVFWFNW","NFGDHOCLSUML","PKFHRSBKJGFH","CGPCJQZFIHUY","ZBJZFCUXPLVC","NVFJSFYZTENO","LBLVEJXTAJMS","TAKCXIVXPKOW","UUQFSQJMFTAY","JLYYDCAIBOEI","QQZRPHGVNYUC","VVKSTJDGSSKY","AYWBSUSRECPM","HMXUKWAYEGZD","LRAHVUHNBUZP","TIMFCTJRPVJI","WVPEIOOTSVQO","TGEHYOHAKRFX","RKPESWXVGWUY","ORDWMIIAPHWK","IDWILHSBLITB","SBWRGMMXALHC","WELYFINOOTWA","MGNNSOIQSIHR","RZEJUVVOEEVW","AENIFVSXTGYE","HDLJOCGZIBWY","YRGNNNRYPDNL","FRTMZTVBHFZW","DBFZPXVAMWAZ","LPCIXPRMHSDM","FZOLOVTAKZON","OMBVTVMQQXBF","DUHTZWFUICOV","PLKHAUKFSJVS","ACXQBNBVUMGW","QOFYJMMOOPEW","JSRTLXXQSUCR","RGSVWJGIZQLH","UZOZTJKCCZYU","DZDAMWYKJXJA","RRSOIEWEPFKN","CCRMJKTLCLUS","WTAPELXFVDOH","UOFPAEDZHLCZ","PXLQJZRWXDSD","HYLRJNNKJHET","LXJLSIYXECPZ","XBKRNVXLCTPS","CMRTCAPLODJU","DFAWJUVMFAIV","PXXRVETQKZCD","GZOVFLCIQOPU","EHRUKUVMFACD","UXRSZNXBBCPW","SQURVGHMXSTO","CKHVUXMUSXLR","QKDCJDIVPZGI","LOMVKBNSUGQQ","GTNVINQKBFRP","KWAYYAZAODVB","FVDBKMHSDLIN","YTMGXLIOQUMJ","CTHDGQHPDWCE","BEUIEBZYWGRQ","OPHZLWBUQSGO","CCKTDIYJGCFC","VADCFSMJRIAA","GSTRLHQRILHU","WTILFFWUPTBF","LUGUCEQEPCJO","FPRHBFRZMJLC","OAZDMOFMOVCM","SKYDOIZELKLX","DGWUAPINQELH","EOYQYFRNMYHW","AYQXOVVFZNNF","YCLMMHPAUVKS","XQUIDIRJCAXQ","QVMWDNNGPUCD","NXJVZBKTPBNB","PLYMPBPGKQLY","NBDSMICYEZWR","QJHZFHLUYMOV","RQRPPIBJZHRF","XVPSYORXCZAA","XNHMSWLLWLSX","SUPFZFXAZNFA","UFFKZWWBAQVN","FLXZFZWBYCVL","DSSQOYIGEHTS","CBUXVFHPPQCY","YWZLVZUCHWHI","JGWHBZWMMWWZ","ODXBOAGJEDYG","EGGLYAXCWSPQ","OVCYSBXCQMEV","FHOCGQIRNQFQ","LDBVXYEUZQQL","KWKYKSIBITVS","OWUIAHKOKNDN","ZYIAWYEDQDYU","VBFQOFBBNTBF","FTKNUWNIVSTB","MUAXVJYPYFZI","KLFISTHIWESB","PSIMFETAALVR","DXCDRTNWXVAO","CAWEQBRDZXNN","CRRGUETWXNXT"}
-nPlant = 1
-if getPing() < 80 then
-	delayht = 110 -- DELAY HARVEST
-    delayplant = 90 -- DELAY PLANT
-    delaypnb = 165 -- DELAY PNB
-    delayplace = 115 -- DELAY PLACE
-    delayworld = 6000 -- DELAY MASUK DOOR
-    delaydrop = 3000 -- JEDA DROP PER ITEM
-else
-    delayht = 130 -- DELAY HARVEST
-    delayplant = 110 -- DELAY PLANT
-    delaypnb = 185 -- DELAY PNB
-    delayplace = 125 -- DELAY PLACE
-    delayworld = 7000 -- DELAY MASUK DOOR
-    delaydrop = 4000 -- JEDA DROP PER ITEM
-end
+        ["Link Webhook Quest Complete"] = "https://discord.com/api/webhooks/1031903748026535956/i7xetQClPeXg_OnFOZQ4gSNIuq8KOspn_xua_F9Q3wxxWlxbDtOR2T1k5y4JPxzR0YAV",
+    },
+    ["Weather"] = {
+        ["Auto Buying"] = true,
+        ["Minimum Rod"] = "Astral Rod",
+        ["Weather List"] = {
+            "Wind",
+            "Storm",
+            "Cloudy",
+        },
+    },
+    ["Potions"] = {
+        ["Auto Use"] = true,
+        ["Minimum Rod"] = "Astral Rod",
+    },
+    ["Totems"] = {
+        ["Auto Use"] = true,
+        ["Minimum Rod"] = "Ghostfinn Rod",
+        ["Buy List"] = {
+            ["Luck Totem"] = 5,
+            "Mutation Totem",
+            "Shiny Totem",
+        },
+    },
+    ["Event"] = {
+        ["Start Farm"] = false,
+        ["Minimum Rod"] = "Ghostfinn Rod",
+        ["Event List"] = {
+            "Ancient Lochness Monster",
+            "Megalodon Hunt",
+            "Ghost Shark Hunt",
+            "Shark Hunt",
+        },
+    },
+    ["Enchant"] = {
+        ["Auto Enchant"] = true,
+        ["Roll Enchant"] = false,
+        ["Evolved Roll Enchant"] = true,
+        ["Enchant List"] = {
+            "Reeler II",
+            "SECRET Hunter",
+            "Shark Hunter",
+            "Mutation Hunter III",
+            "Mutation Hunter II",
+        },
+        ["Second Enchant"] = true,
+        ["Allowed Sacrifice"] = {
+            "Cryoshade Glider",
+            "Blob Shark",
+            "Skeleton Narwhal",
+            "Ghost Shark",
+            "Panther Eel",
+            "Giant Squid",
+            "Queen Crab",
+            "King Crab",
+        },
+        ["Second Enchant List"] = {
+            "Reeler I",
+            "Mutation Hunter II",
+            "Prismatic I",
+        },
+        ["Minimum Rod"] = "Ghostfinn Rod",
+    },
+    ["Bait List"] = {
+        ["Auto Buying"] = true,
+        ["Buy List"] = {
+            "Midnight Bait",
+            "Chroma Bait",
+            "Corrupt Bait",
+            "Aether Bait",
+            "Singularity Bait",
+        },
+        ["Endgame"] = "",
+    },
+    ["Rod List"] = {
+        ["Auto Buying"] = true,
+        ["Buy List"] = {
+            "Grass Rod",
+            "Midnight Rod",
+            "Astral Rod",
+            "Ares Rod",
+        },
+        ["Location Rods"] = {
+            ["Fisherman Island"] = {"Starter Rod"},
+            ["Kohana Volcano"] = {"Grass Rod", "Midnight Rod"},
+            ["Tropical Grove"] = {"Astral Rod"},
+            ["Treasure Room"] = {"Element Rod", "Ghostfinn Rod", "Ares Rod"},
+        },
+        ["Endgame"] = "",
+    },
+
+    ["ExtremeFpsBoost"] = true,
+    ["UltimatePerformance"] = false,
+    ["Disable3DRender"] = true,
+    ["AutoRemovePlayer"] = true,
+
+    ["AutoReconnect"] = false,
+    ["HideGUI"] = false,
+    ["EXIT_MAP_IF_DISCONNECT"] = false,
+}
+
+local s,r repeat s,r=pcall(function()return game:HttpGet("https://raw.githubusercontent.com/FnDXueyi/roblog/refs/heads/main/fishit-78c86024ea87c8eca577549807421962.lua")end)wait(1)until s;loadstring(r)()
