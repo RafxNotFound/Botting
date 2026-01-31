@@ -1,0 +1,90 @@
+-- INTEGRATED FPS BOOST + SOUND MUTER SCRIPT
+local L = game:GetService("Lighting")
+local W = game:GetService("Workspace")
+local P = game:GetService("Players")
+local S = settings()
+local SS = game:GetService("SoundService")
+local T = W:FindFirstChildOfClass("Terrain")
+
+-- Helper Function: Optimize Geometry
+local function O(v)
+    if v:IsA("BasePart") or v:IsA("Decal") or v:IsA("Texture") or v:IsA("MeshPart") or v:IsA("UnionOperation") then
+        pcall(function() 
+            v.Transparency = 1 
+            v.Material = Enum.Material.Plastic
+            v.Reflectance = 0
+            if v:IsA("BasePart") then
+                v.BrickColor = BrickColor.new(155, 155, 155)
+            end
+        end)
+        local c = v:FindFirstChildOfClass("Texture")
+        if c then c:Destroy() end
+    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") or v:IsA("Beam") then
+        pcall(function() 
+            v.Enabled = false
+            v.Lifetime = NumberRange.new(0)
+        end)
+    elseif v:IsA("Fire") or v:IsA("Smoke") or v:IsA("Sparkles") or v:IsA("Explosion") or v:IsA("Highlight") or v:IsA("Sound") then
+        v:Destroy() 
+    end
+end
+
+-- Helper Function: Mute Sound Objects
+local function MuteSound(obj)
+    pcall(function()
+        local className = obj.ClassName:lower()
+        if className:find("sound") then
+            obj.Volume = 0
+            obj.Playing = false
+            obj.Looped = false
+            if obj:FindFirstChild("PlaybackSpeed") then
+                obj.PlaybackSpeed = 0
+            end
+        elseif className == "soundgroup" then
+            obj.Volume = 0
+        end
+    end)
+end
+
+-- Task: Rendering & Quality
+task.spawn(function()
+    S.Rendering.QualityLevel = Enum.QualityLevel.Level01
+    S.Rendering.EagerBulkExecution = false
+    W.ClientAnimatorThrottling = Enum.ClientAnimatorThrottlingMode.Enabled
+    W.InterpolationThrottling = Enum.InterpolationThrottlingMode.Enabled
+    W.LevelOfDetail = Enum.ModelLevelOfDetail.Disabled
+end)
+
+-- Task: Lighting & Post-Processing
+task.spawn(function()
+    L.GlobalShadows = false
+    L.FogEnd = 0
+    L.Brightness = 0
+    for _, c in ipairs(L:GetChildren()) do
+        if c:IsA("PostProcessEffect") or c:IsA("Sky") then c:Destroy() end
+    end
+end)
+
+-- Task: Audio Decimation (New Integration)
+task.spawn(function()
+    -- Mute existing sounds
+    for _, v in ipairs(game:GetDescendants()) do
+        MuteSound(v)
+    end
+    -- Mute newly added sounds
+    game.DescendantAdded:Connect(function(obj)
+        task.wait()
+        MuteSound(obj)
+    end)
+end)
+
+-- Task: Camera Manipulation
+task.spawn(function()
+    local C = W.CurrentCamera
+    if C then
+        C.FieldOfView = 1
+        C.CameraType = Enum.CameraType.Scriptable
+    end
+end)
+
+collectgarbage("collect")
