@@ -108,7 +108,7 @@ _G.FishItConfig = _G.FishItConfig or {
             "Mutation Hunter III",
             "Mutation Hunter II",
         },
-        ["Second Enchant"] = true,
+        ["Second Enchant"] = false,
         ["Allowed Sacrifice"] = {
             "Cryoshade Glider",
             "Blob Shark",
