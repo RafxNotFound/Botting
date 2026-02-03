@@ -42,8 +42,8 @@ _G.FishItConfig = _G.FishItConfig or {
     },
     ["Doing Quest"] = {
         ["Auto Ghostfinn Rod"] = true,
-        ["Auto Element Rod"] = false,
-        ["Unlock Ancient Ruin"] = false,
+        ["Auto Element Rod"] = true,
+        ["Unlock Ancient Ruin"] = true,
         ["Allowed Sacrifice"] = {
             "Ghost Shark",
             "Cryoshade Glider",
@@ -108,7 +108,7 @@ _G.FishItConfig = _G.FishItConfig or {
             "Mutation Hunter III",
             "Mutation Hunter II",
         },
-        ["Second Enchant"] = false,
+        ["Second Enchant"] = true,
         ["Allowed Sacrifice"] = {
             "Cryoshade Glider",
             "Blob Shark",
@@ -124,7 +124,7 @@ _G.FishItConfig = _G.FishItConfig or {
             "Mutation Hunter II",
             "Prismatic I",
         },
-        ["Minimum Rod"] = "Ghostfinn Rod",
+        ["Minimum Rod"] = "Element Rod",
     },
     ["Bait List"] = {
         ["Auto Buying"] = true,
